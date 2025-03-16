@@ -22,11 +22,12 @@
             left: -100%;
             width: 20%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             overflow-y: auto;
             transition: left 0.3s;
             padding: 20px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            border-left: 2px solid black;
         }
 
         .filter-toggle {
@@ -36,7 +37,6 @@
             cursor: pointer;
             width: 50px;
             height: 50px;
-            z-index: 1000;
         }
 
         .filter-section {
@@ -46,9 +46,8 @@
         .dropdown {
             display: none;
             padding: 10px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
             border: 1px solid black;
-            border-radius: 5px;
         }
 
         .dropdown label {
@@ -60,14 +59,6 @@
         .color-options {
             display: none;
             gap: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 5px;
-            padding: 10px;
-            border: 1px solid black;
-        }
-
-        .color-option-wrapper {
-            position: relative;
         }
 
         .color-options img, .filter-section img {
@@ -75,6 +66,10 @@
             height: 50px;
             cursor: pointer;
             margin: 5px;
+        }
+
+        .color-option-wrapper {
+            position: relative;
         }
 
         @media (max-width: 1024px) {
@@ -128,11 +123,11 @@
     <div class="filter-section">
         <img src="images/icons/brand.png" alt="Brand" onclick="toggleDropdown('brandDropdown')">
         <div class="dropdown" id="brandDropdown">
-            <label><input type="checkbox" value="NIKE"> NIKE</label>
-            <label><input type="checkbox" value="ADIDAS"> ADIDAS</label>
+            <label><input type="checkbox" value="NIKE" onclick="updateSilhouetteFilter()"> NIKE</label>
+            <label><input type="checkbox" value="ADIDAS" onclick="updateSilhouetteFilter()"> ADIDAS</label>
         </div>
     </div>
-    <div class="filter-section">
+    <div class="filter-section" id="silhouetteSection" style="display:none;">
         <img src="images/icons/sneaker.png" alt="Silhouette" onclick="toggleDropdown('silhouetteDropdown')">
         <div class="dropdown" id="silhouetteDropdown">
             <label><input type="checkbox" value="YEEZY 350"> YEEZY 350</label>
@@ -201,10 +196,13 @@
 </div>
 
 <script>
+    let selectedNikeSilhouettes = [];
+    let selectedAdidasSilhouettes = [];
+
     function toggleFilters() {
         let container = document.getElementById('filterContainer');
-        let colorDropdown = document.getElementById('colorDropdown');
         let filterIcon = document.querySelector('.filter-toggle');
+        let colorDropdown = document.getElementById('colorDropdown');
 
         if (container.style.left === '0px') {
             container.style.left = '-100%';
@@ -229,6 +227,46 @@
             img.src = originalSrc;
         } else {
             img.src = checkedSrc;
+        }
+    }
+
+    function updateSilhouetteFilter() {
+        let nikeCheckbox = document.querySelector('input[value="NIKE"]');
+        let adidasCheckbox = document.querySelector('input[value="ADIDAS"]');
+        let silhouetteSection = document.getElementById('silhouetteSection');
+
+        if (nikeCheckbox.checked || adidasCheckbox.checked) {
+            silhouetteSection.style.display = 'block';
+        } else {
+            silhouetteSection.style.display = 'none';
+        }
+
+        let silhouetteDropdown = document.getElementById('silhouetteDropdown');
+        let checkboxes = silhouetteDropdown.querySelectorAll('input[type="checkbox"]');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.disabled = false;
+            checkbox.checked = false;
+        });
+
+        if (nikeCheckbox.checked && adidasCheckbox.checked) {
+            checkboxes.forEach(checkbox => {
+                checkbox.disabled = false;
+            });
+        } else {
+            if (nikeCheckbox.checked) {
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.value !== 'AIR FORCE SUPREME' && checkbox.value !== 'AIR JORDAN 1') {
+                        checkbox.disabled = true;
+                    }
+                });
+            } else if (adidasCheckbox.checked) {
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.value !== 'YEEZY 350' && checkbox.value !== 'YEEZY 500' && checkbox.value !== 'YEEZY 700') {
+                        checkbox.disabled = true;
+                    }
+                });
+            }
         }
     }
 </script>
