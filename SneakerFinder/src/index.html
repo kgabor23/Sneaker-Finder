@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Filters</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .filter-container {
+            position: fixed;
+            left: -100%;
+            width: 20%;
+            height: 100%;
+            background: #f4f4f4;
+            overflow-y: auto;
+            transition: left 0.3s;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .filter-toggle {
+            position: fixed;
+            left: 0;
+            top: 50px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+        }
+        .filter-section {
+            margin-bottom: 20px;
+        }
+        .dropdown {
+            display: none;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+        .dropdown label {
+            display: block;
+            cursor: pointer;
+        }
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .color-options img, .filter-section img {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .color-option-wrapper {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<img src="images/filter.png" alt="Filter" class="filter-toggle" onclick="toggleFilters()">
+<div class="filter-container" id="filterContainer">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>Filters</h3>
+        <button onclick="toggleFilters()">Close</button>
+    </div>
+    <div class="filter-section">
+        <img src="images/brand.png" alt="Brand" onclick="toggleDropdown('brandDropdown')">
+        <div class="dropdown" id="brandDropdown">
+            <label><input type="checkbox" value="NIKE"> NIKE</label>
+            <label><input type="checkbox" value="ADIDAS"> ADIDAS</label>
+        </div>
+    </div>
+    <div class="filter-section">
+        <img src="images/cut.png" alt="Cut" onclick="toggleDropdown('cutDropdown')">
+        <div class="dropdown" id="cutDropdown">
+            <label><input type="checkbox" value="HIGH"> HIGH</label>
+            <label><input type="checkbox" value="LOW"> LOW</label>
+        </div>
+    </div>
+    <div class="filter-section">
+        <img src="images/color.png" alt="Color" onclick="toggleDropdown('colorDropdown')">
+        <div class="dropdown color-options" id="colorDropdown">
+            <div class="color-option-wrapper">
+                <img src="images/black.png" alt="Black" onclick="toggleColor(this, 'black')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/brown.png" alt="Brown" onclick="toggleColor(this, 'brown')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/grey.png" alt="Grey" onclick="toggleColor(this, 'grey')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/white.png" alt="White" onclick="toggleColor(this, 'white')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/pink.png" alt="Pink" onclick="toggleColor(this, 'pink')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/red.png" alt="Red" onclick="toggleColor(this, 'red')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/orange.png" alt="Orange" onclick="toggleColor(this, 'orange')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/yellow.png" alt="Yellow" onclick="toggleColor(this, 'yellow')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/green.png" alt="Green" onclick="toggleColor(this, 'green')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/cyan.png" alt="Cyan" onclick="toggleColor(this, 'cyan')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/blue.png" alt="Blue" onclick="toggleColor(this, 'blue')">
+            </div>
+            <div class="color-option-wrapper">
+                <img src="images/purple.png" alt="Purple" onclick="toggleColor(this, 'purple')">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleFilters() {
+        let container = document.getElementById('filterContainer');
+        let colorDropdown = document.getElementById('colorDropdown');
+
+        if (container.style.left === '0px') {
+            container.style.left = '-100%';
+            colorDropdown.style.display = 'none';
+        } else {
+            container.style.left = '0px';
+        }
+    }
+
+    function toggleDropdown(id) {
+        let dropdown = document.getElementById(id);
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleColor(img, color) {
+        let originalSrc = `images/${color}.png`;
+        let checkedSrc = `images/${color}Checked.png`;
+
+        if (img.src.includes(`${color}Checked.png`)) {
+            img.src = originalSrc;
+        } else {
+            img.src = checkedSrc;
+        }
+    }
+</script>
+</body>
+</html>
