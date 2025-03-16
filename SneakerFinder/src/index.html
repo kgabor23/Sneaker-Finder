@@ -11,13 +11,18 @@
             padding: 0;
             display: flex;
             height: 100vh;
+            background-image: url('images/backgrounds/supBack.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
+
         .filter-container {
             position: fixed;
             left: -100%;
             width: 20%;
             height: 100%;
-            background: #f4f4f4;
+            background: rgba(0, 0, 0, 0.5);
             overflow-y: auto;
             transition: left 0.3s;
             padding: 20px;
@@ -100,7 +105,7 @@
     </style>
 </head>
 <body>
-<img src="images/icons/filter.png" alt="Filter" class="filter-toggle" onclick="toggleFilters()">
+<img src="images/icons/filter.png" alt="Filter" class="filter-toggle" id="filterToggle" onclick="toggleFilters()">
 <div class="filter-container" id="filterContainer">
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <h3>Filters</h3>
@@ -185,12 +190,15 @@
     function toggleFilters() {
         let container = document.getElementById('filterContainer');
         let colorDropdown = document.getElementById('colorDropdown');
+        let filterToggle = document.getElementById('filterToggle');
 
         if (container.style.left === '0px') {
             container.style.left = '-100%';
             colorDropdown.style.display = 'none';
+            filterToggle.style.display = 'block';
         } else {
             container.style.left = '0px';
+            filterToggle.style.display = 'none';
         }
     }
 
@@ -204,6 +212,8 @@
         let checkedSrc = `images/icons/${color}Checked.png`;
 
         if (img.src.includes(`${color}Checked.png`)) {
+
+            
             img.src = originalSrc;
         } else {
             img.src = checkedSrc;
