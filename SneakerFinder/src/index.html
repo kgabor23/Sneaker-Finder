@@ -73,17 +73,40 @@
         }
 
         .filters-header {
-             font-size: 36px;
-             font-family: 'Roboto', sans-serif;
-             font-weight: 500;
-             color: #000;
-             letter-spacing: 2px;
-             text-align: center;
-             margin: 0;
-             padding: 10px 0;
-             text-shadow: none;
-             display: block;
-         }
+            font-size: 36px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            color: #000;
+            letter-spacing: 2px;
+            text-align: center;
+            margin: 0;
+            padding: 10px 0;
+            text-shadow: none;
+            display: block;
+        }
+
+        .filter-icon-wrapper {
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .filter-icon-wrapper img {
+            margin-right: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .filter-icon-wrapper img:hover {
+            transform: translateX(5px);
+        }
+
+        .filter-icon-wrapper span {
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            color: #000;
+            letter-spacing: 1px;
+        }
 
         @media (max-width: 1024px) {
             .filter-container {
@@ -132,18 +155,24 @@
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <div class="filters-header">Filters</div>
         <div class="filter-section">
-            <img src="images/icons/close.png" alt="Close" onclick="toggleFilters()" style="cursor: pointer; ">
+            <img src="images/icons/close.png" alt="Close" onclick="toggleFilters()" style="cursor: pointer;">
         </div>
     </div>
     <div class="filter-section">
-        <img src="images/icons/brand.png" alt="Brand" onclick="toggleDropdown('brandDropdown')">
+        <div class="filter-icon-wrapper">
+            <img src="images/icons/brand.png" alt="Brand" onclick="toggleDropdown('brandDropdown')">
+            <span>Brand</span>
+        </div>
         <div class="dropdown" id="brandDropdown">
             <label><input type="checkbox" value="NIKE" onclick="updateSilhouetteFilter()"> NIKE</label>
             <label><input type="checkbox" value="ADIDAS" onclick="updateSilhouetteFilter()"> ADIDAS</label>
         </div>
     </div>
     <div class="filter-section" id="silhouetteSection" style="display:none;">
-        <img src="images/icons/sneaker.png" alt="Silhouette" onclick="toggleDropdown('silhouetteDropdown')">
+        <div class="filter-icon-wrapper">
+            <img src="images/icons/sneaker.png" alt="Silhouette" onclick="toggleDropdown('silhouetteDropdown')">
+            <span>Silhouette</span>
+        </div>
         <div class="dropdown" id="silhouetteDropdown">
             <label><input type="checkbox" value="YEEZY 350"> YEEZY 350</label>
             <label><input type="checkbox" value="YEEZY 500"> YEEZY 500</label>
@@ -153,14 +182,20 @@
         </div>
     </div>
     <div class="filter-section">
-        <img src="images/icons/cut.png" alt="Cut" onclick="toggleDropdown('cutDropdown')">
+        <div class="filter-icon-wrapper">
+            <img src="images/icons/cut.png" alt="Cut" onclick="toggleDropdown('cutDropdown')">
+            <span>Cut</span>
+        </div>
         <div class="dropdown" id="cutDropdown">
             <label><input type="checkbox" value="HIGH"> HIGH</label>
             <label><input type="checkbox" value="LOW"> LOW</label>
         </div>
     </div>
     <div class="filter-section">
-        <img src="images/icons/color.png" alt="Color" onclick="toggleDropdown('colorDropdown')">
+        <div class="filter-icon-wrapper">
+            <img src="images/icons/color.png" alt="Color" onclick="toggleDropdown('colorDropdown')">
+            <span>Color</span>
+        </div>
         <div class="dropdown color-options" id="colorDropdown">
             <table>
                 <tr>
