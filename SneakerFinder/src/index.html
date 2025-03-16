@@ -45,8 +45,7 @@
             cursor: pointer;
         }
         .color-options {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: none;
             gap: 20px;
         }
         .color-options img, .filter-section img {
@@ -134,42 +133,50 @@
     <div class="filter-section">
         <img src="images/icons/color.png" alt="Color" onclick="toggleDropdown('colorDropdown')">
         <div class="dropdown color-options" id="colorDropdown">
-            <div class="color-option-wrapper">
-                <img src="images/icons/black.png" alt="Black" onclick="toggleColor(this, 'black')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/brown.png" alt="Brown" onclick="toggleColor(this, 'brown')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/grey.png" alt="Grey" onclick="toggleColor(this, 'grey')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/white.png" alt="White" onclick="toggleColor(this, 'white')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/pink.png" alt="Pink" onclick="toggleColor(this, 'pink')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/red.png" alt="Red" onclick="toggleColor(this, 'red')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/orange.png" alt="Orange" onclick="toggleColor(this, 'orange')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/yellow.png" alt="Yellow" onclick="toggleColor(this, 'yellow')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/green.png" alt="Green" onclick="toggleColor(this, 'green')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/cyan.png" alt="Cyan" onclick="toggleColor(this, 'cyan')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/blue.png" alt="Blue" onclick="toggleColor(this, 'blue')">
-            </div>
-            <div class="color-option-wrapper">
-                <img src="images/icons/purple.png" alt="Purple" onclick="toggleColor(this, 'purple')">
-            </div>
+            <table>
+                <tr>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/black.png" alt="Black" onclick="toggleColor(this, 'black')">
+                    </td>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/brown.png" alt="Brown" onclick="toggleColor(this, 'brown')">
+                    </td>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/grey.png" alt="Grey" onclick="toggleColor(this, 'grey')">
+                    </td>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/white.png" alt="White" onclick="toggleColor(this, 'white')">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/pink.png" alt="Pink" onclick="toggleColor(this, 'pink')">
+                    </td>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/red.png" alt="Red" onclick="toggleColor(this, 'red')">
+                    </td>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/orange.png" alt="Orange" onclick="toggleColor(this, 'orange')">
+                    </td>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/yellow.png" alt="Yellow" onclick="toggleColor(this, 'yellow')">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/green.png" alt="Green" onclick="toggleColor(this, 'green')">
+                    </td>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/cyan.png" alt="Cyan" onclick="toggleColor(this, 'cyan')">
+                    </td>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/blue.png" alt="Blue" onclick="toggleColor(this, 'blue')">
+                    </td>
+                    <td class="color-option-wrapper">
+                        <img src="images/icons/purple.png" alt="Purple" onclick="toggleColor(this, 'purple')">
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
