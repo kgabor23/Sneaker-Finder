@@ -72,6 +72,19 @@
             position: relative;
         }
 
+        .filters-header {
+             font-size: 36px;
+             font-family: 'Roboto', sans-serif;
+             font-weight: 500;
+             color: #000;
+             letter-spacing: 2px;
+             text-align: center;
+             margin: 0;
+             padding: 10px 0;
+             text-shadow: none;
+             display: block;
+         }
+
         @media (max-width: 1024px) {
             .filter-container {
                 width: 30%;
@@ -117,7 +130,7 @@
 <img src="images/icons/filter.png" alt="Filter" class="filter-toggle" onclick="toggleFilters()">
 <div class="filter-container" id="filterContainer">
     <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3>Filters</h3>
+        <div class="filters-header">Filters</div>
         <div class="filter-section">
             <img src="images/icons/close.png" alt="Close" onclick="toggleFilters()" style="cursor: pointer; ">
         </div>
