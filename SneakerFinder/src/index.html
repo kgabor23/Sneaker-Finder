@@ -194,10 +194,14 @@
         </div>
     </div>
 </div>
-
 <script>
     let selectedNikeSilhouettes = [];
     let selectedAdidasSilhouettes = [];
+
+    const silhouettes = {
+        'NIKE': ['AIR FORCE SUPREME', 'AIR JORDAN 1'],
+        'ADIDAS': ['YEEZY 350', 'YEEZY 500', 'YEEZY 700']
+    };
 
     function toggleFilters() {
         let container = document.getElementById('filterContainer');
@@ -255,19 +259,23 @@
             });
         } else {
             if (nikeCheckbox.checked) {
-                checkboxes.forEach(checkbox => {
-                    if (checkbox.value !== 'AIR FORCE SUPREME' && checkbox.value !== 'AIR JORDAN 1') {
-                        checkbox.disabled = true;
-                    }
-                });
+                updateSilhouetteCheckboxes('NIKE', checkboxes);
             } else if (adidasCheckbox.checked) {
-                checkboxes.forEach(checkbox => {
-                    if (checkbox.value !== 'YEEZY 350' && checkbox.value !== 'YEEZY 500' && checkbox.value !== 'YEEZY 700') {
-                        checkbox.disabled = true;
-                    }
-                });
+                updateSilhouetteCheckboxes('ADIDAS', checkboxes);
             }
         }
+    }
+
+    function updateSilhouetteCheckboxes(brand, checkboxes) {
+        const brandSilhouettes = silhouettes[brand];
+
+        checkboxes.forEach(checkbox => {
+            if (brandSilhouettes.includes(checkbox.value)) {
+                checkbox.disabled = false;
+            } else {
+                checkbox.disabled = true;
+            }
+        });
     }
 </script>
 </body>
