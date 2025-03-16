@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            height: 100vh;
         }
         .filter-container {
             position: fixed;
@@ -57,24 +58,64 @@
         .color-option-wrapper {
             position: relative;
         }
+
+        @media (max-width: 1024px) {
+            .filter-container {
+                width: 30%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .filter-container {
+                width: 40%;
+            }
+            .filter-toggle {
+                width: 40px;
+                height: 40px;
+            }
+            .color-options img, .filter-section img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-container {
+                width: 60%;
+            }
+            .filter-toggle {
+                width: 30px;
+                height: 30px;
+            }
+            .color-options img, .filter-section img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dropdown {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
-<img src="images/filter.png" alt="Filter" class="filter-toggle" onclick="toggleFilters()">
+<img src="images/icons/filter.png" alt="Filter" class="filter-toggle" onclick="toggleFilters()">
 <div class="filter-container" id="filterContainer">
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <h3>Filters</h3>
         <button onclick="toggleFilters()">Close</button>
     </div>
     <div class="filter-section">
-        <img src="images/brand.png" alt="Brand" onclick="toggleDropdown('brandDropdown')">
+        <img src="images/icons/brand.png" alt="Brand" onclick="toggleDropdown('brandDropdown')">
         <div class="dropdown" id="brandDropdown">
             <label><input type="checkbox" value="NIKE"> NIKE</label>
             <label><input type="checkbox" value="ADIDAS"> ADIDAS</label>
         </div>
     </div>
     <div class="filter-section">
-        <img src="images/footwear.png" alt="Silhouette" onclick="toggleDropdown('silhouetteDropdown')">
+        <img src="images/icons/sneaker.png" alt="Silhouette" onclick="toggleDropdown('silhouetteDropdown')">
         <div class="dropdown" id="silhouetteDropdown">
             <label><input type="checkbox" value="YEEZY 350"> YEEZY 350</label>
             <label><input type="checkbox" value="YEEZY 500"> YEEZY 500</label>
@@ -84,50 +125,50 @@
         </div>
     </div>
     <div class="filter-section">
-        <img src="images/cut.png" alt="Cut" onclick="toggleDropdown('cutDropdown')">
+        <img src="images/icons/cut.png" alt="Cut" onclick="toggleDropdown('cutDropdown')">
         <div class="dropdown" id="cutDropdown">
             <label><input type="checkbox" value="HIGH"> HIGH</label>
             <label><input type="checkbox" value="LOW"> LOW</label>
         </div>
     </div>
     <div class="filter-section">
-        <img src="images/color.png" alt="Color" onclick="toggleDropdown('colorDropdown')">
+        <img src="images/icons/color.png" alt="Color" onclick="toggleDropdown('colorDropdown')">
         <div class="dropdown color-options" id="colorDropdown">
             <div class="color-option-wrapper">
-                <img src="images/black.png" alt="Black" onclick="toggleColor(this, 'black')">
+                <img src="images/icons/black.png" alt="Black" onclick="toggleColor(this, 'black')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/brown.png" alt="Brown" onclick="toggleColor(this, 'brown')">
+                <img src="images/icons/brown.png" alt="Brown" onclick="toggleColor(this, 'brown')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/grey.png" alt="Grey" onclick="toggleColor(this, 'grey')">
+                <img src="images/icons/grey.png" alt="Grey" onclick="toggleColor(this, 'grey')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/white.png" alt="White" onclick="toggleColor(this, 'white')">
+                <img src="images/icons/white.png" alt="White" onclick="toggleColor(this, 'white')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/pink.png" alt="Pink" onclick="toggleColor(this, 'pink')">
+                <img src="images/icons/pink.png" alt="Pink" onclick="toggleColor(this, 'pink')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/red.png" alt="Red" onclick="toggleColor(this, 'red')">
+                <img src="images/icons/red.png" alt="Red" onclick="toggleColor(this, 'red')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/orange.png" alt="Orange" onclick="toggleColor(this, 'orange')">
+                <img src="images/icons/orange.png" alt="Orange" onclick="toggleColor(this, 'orange')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/yellow.png" alt="Yellow" onclick="toggleColor(this, 'yellow')">
+                <img src="images/icons/yellow.png" alt="Yellow" onclick="toggleColor(this, 'yellow')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/green.png" alt="Green" onclick="toggleColor(this, 'green')">
+                <img src="images/icons/green.png" alt="Green" onclick="toggleColor(this, 'green')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/cyan.png" alt="Cyan" onclick="toggleColor(this, 'cyan')">
+                <img src="images/icons/cyan.png" alt="Cyan" onclick="toggleColor(this, 'cyan')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/blue.png" alt="Blue" onclick="toggleColor(this, 'blue')">
+                <img src="images/icons/blue.png" alt="Blue" onclick="toggleColor(this, 'blue')">
             </div>
             <div class="color-option-wrapper">
-                <img src="images/purple.png" alt="Purple" onclick="toggleColor(this, 'purple')">
+                <img src="images/icons/purple.png" alt="Purple" onclick="toggleColor(this, 'purple')">
             </div>
         </div>
     </div>
@@ -152,8 +193,8 @@
     }
 
     function toggleColor(img, color) {
-        let originalSrc = `images/${color}.png`;
-        let checkedSrc = `images/${color}Checked.png`;
+        let originalSrc = `images/icons/${color}.png`;
+        let checkedSrc = `images/icons/${color}Checked.png`;
 
         if (img.src.includes(`${color}Checked.png`)) {
             img.src = originalSrc;
