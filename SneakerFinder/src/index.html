@@ -28,39 +28,53 @@
             padding: 20px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
         }
+
         .filter-toggle {
             position: fixed;
-            left: 0;
+            left: 2%;
             top: 50px;
             cursor: pointer;
             width: 50px;
             height: 50px;
+            z-index: 1000;
         }
+
         .filter-section {
             margin-bottom: 20px;
         }
+
         .dropdown {
             display: none;
             padding: 10px;
-            background: #fff;
-            border: 1px solid #ddd;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid black;
+            border-radius: 5px;
         }
+
         .dropdown label {
             display: block;
             cursor: pointer;
+            color: white;
         }
+
         .color-options {
             display: none;
             gap: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid black;
         }
+
+        .color-option-wrapper {
+            position: relative;
+        }
+
         .color-options img, .filter-section img {
             width: 50px;
             height: 50px;
             cursor: pointer;
             margin: 5px;
-        }
-        .color-option-wrapper {
-            position: relative;
         }
 
         @media (max-width: 1024px) {
@@ -105,7 +119,7 @@
     </style>
 </head>
 <body>
-<img src="images/icons/filter.png" alt="Filter" class="filter-toggle" id="filterToggle" onclick="toggleFilters()">
+<img src="images/icons/filter.png" alt="Filter" class="filter-toggle" onclick="toggleFilters()">
 <div class="filter-container" id="filterContainer">
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <h3>Filters</h3>
@@ -190,15 +204,15 @@
     function toggleFilters() {
         let container = document.getElementById('filterContainer');
         let colorDropdown = document.getElementById('colorDropdown');
-        let filterToggle = document.getElementById('filterToggle');
+        let filterIcon = document.querySelector('.filter-toggle');
 
         if (container.style.left === '0px') {
             container.style.left = '-100%';
             colorDropdown.style.display = 'none';
-            filterToggle.style.display = 'block';
+            filterIcon.style.display = 'block';
         } else {
             container.style.left = '0px';
-            filterToggle.style.display = 'none';
+            filterIcon.style.display = 'none';
         }
     }
 
@@ -212,8 +226,6 @@
         let checkedSrc = `images/icons/${color}Checked.png`;
 
         if (img.src.includes(`${color}Checked.png`)) {
-
-            
             img.src = originalSrc;
         } else {
             img.src = checkedSrc;
