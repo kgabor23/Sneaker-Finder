@@ -11,10 +11,6 @@
             padding: 0;
             display: flex;
             height: 100vh;
-            background-image: url('images/backgrounds/supBack.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             flex-direction: column;
         }
 
@@ -34,7 +30,7 @@
             width: 25%;
             display: flex;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.25);
             padding: 5px;
             border-radius: 5px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -62,7 +58,7 @@
             left: -100%;
             width: 20%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.25);
             overflow-y: auto;
             transition: left 0.3s;
             padding: 20px;
@@ -208,9 +204,7 @@
 <div class="filter-container" id="filterContainer">
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <div class="filters-header">Filters</div>
-        <div class="filter-section">
-            <img src="images/icons/close.png" alt="Close" onclick="toggleFilters()" style="cursor: pointer; ">
-        </div>
+        <img src="images/icons/close.png" alt="Close" onclick="toggleFilters()" style="cursor: pointer; width: 20px; height: 20px ">
     </div>
     <div class="filter-section">
         <div class="filter-icon-wrapper">
