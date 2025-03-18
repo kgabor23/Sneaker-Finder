@@ -6,45 +6,54 @@
     <title>Image Gallery</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
             text-align: center;
             font-family: Arial, sans-serif;
         }
         .container {
             position: relative;
-            display: inline-block;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #slider {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .arrow {
             cursor: pointer;
-            font-size: 2em;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+        }
+        #image-link {
             color: white;
-            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 15px;
             border-radius: 5px;
-        }
-        .left {
-            left: -50px;
-        }
-        .right {
-            right: -50px;
-        }
-        img {
-            width: 100%;
-            height: auto;
-            display: block;
+            text-decoration: none;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <span class="arrow left" onclick="prevImage()">⬅</span>
     <img id="slider" src="images/backgrounds/oreoBackground.jpg" alt="Image 1">
-    <span class="arrow right" onclick="nextImage()">➡</span>
-</div>
-<div>
-    <a id="image-link" href="page1.html">Go to page</a>
+    <div class="controls">
+        <img class="arrow" src="images/icons/blackArrowLeft.png" alt="Left Arrow" onclick="prevImage()">
+        <img class="arrow" src="images/icons/blackArrowRight.png" alt="Right Arrow" onclick="nextImage()">
+        <a id="image-link" href="page1.html">Go to page</a>
+    </div>
 </div>
 
 <script>
