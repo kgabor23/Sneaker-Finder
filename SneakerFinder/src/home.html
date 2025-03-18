@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+        .arrow {
+            cursor: pointer;
+            font-size: 2em;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .left {
+            left: -50px;
+        }
+        .right {
+            right: -50px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span class="arrow left" onclick="prevImage()">⬅</span>
+    <img id="slider" src="images/backgrounds/oreoBackground.jpg" alt="Image 1">
+    <span class="arrow right" onclick="nextImage()">➡</span>
+</div>
+<div>
+    <a id="image-link" href="page1.html">Go to page</a>
+</div>
+
+<script>
+    const images = ["images/backgrounds/oreoBackground.jpg", "images/backgrounds/zebraBackground.jpg", "images/backgrounds/350wallpaper.jpg"];
+    const links = ["page1.html", "page2.html", "page3.html"];
+    let currentIndex = 0;
+
+    function updateImage() {
+        document.getElementById("slider").src = images[currentIndex];
+        document.getElementById("image-link").href = links[currentIndex];
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateImage();
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateImage();
+    }
+</script>
+</body>
+</html>
