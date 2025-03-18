@@ -10,17 +10,36 @@
             padding: 0;
             text-align: center;
             font-family: Arial, sans-serif;
+            background-color: black;
         }
         .container {
             position: relative;
             width: 100vw;
             height: 100vh;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        #slider {
+        .slider-wrapper {
+            position: relative;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            display: flex;
+            overflow: hidden;
+        }
+        .slider {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
         }
         .controls {
             position: absolute;
@@ -48,7 +67,13 @@
 </head>
 <body>
 <div class="container">
-    <img id="slider" src="images/backgrounds/oreoBackground.jpg" alt="Image 1">
+    <div class="slider-wrapper">
+        <div class="slider" id="slider">
+            <div class="slide" style="background-image: url('images/backgrounds/oreoBackground.jpg');"></div>
+            <div class="slide" style="background-image: url('images/backgrounds/zebraBackground.jpg');"></div>
+            <div class="slide" style="background-image: url('images/backgrounds/350wallpaper.jpg');"></div>
+        </div>
+    </div>
     <div class="controls">
         <img class="arrow" src="images/icons/blackArrowLeft.png" alt="Left Arrow" onclick="prevImage()">
         <img class="arrow" src="images/icons/blackArrowRight.png" alt="Right Arrow" onclick="nextImage()">
@@ -57,24 +82,39 @@
 </div>
 
 <script>
-    const images = ["images/backgrounds/oreoBackground.jpg", "images/backgrounds/zebraBackground.jpg", "images/backgrounds/350wallpaper.jpg"];
-    const links = ["page1.html", "page2.html", "page3.html"];
+    const images = ["page1.html", "page2.html", "page3.html"];
     let currentIndex = 0;
+    let autoChangeInterval;
+    const slider = document.getElementById("slider");
+    const imageLink = document.getElementById("image-link");
 
     function updateImage() {
-        document.getElementById("slider").src = images[currentIndex];
-        document.getElementById("image-link").href = links[currentIndex];
+        slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
+        imageLink.href = images[currentIndex];
     }
 
     function prevImage() {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         updateImage();
+        resetAutoChange();
     }
 
     function nextImage() {
         currentIndex = (currentIndex + 1) % images.length;
         updateImage();
+        resetAutoChange();
     }
+
+    function startAutoChange() {
+        autoChangeInterval = setInterval(nextImage, 5000);
+    }
+
+    function resetAutoChange() {
+        clearInterval(autoChangeInterval);
+        startAutoChange();
+    }
+
+    startAutoChange();
 </script>
 </body>
 </html>
