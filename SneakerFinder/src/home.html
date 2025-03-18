@@ -11,6 +11,30 @@
             text-align: center;
             font-family: Arial, sans-serif;
         }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .navbar img {
+            height: 40px;
+            cursor: pointer;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.6);
+        }
         .container {
             position: relative;
             width: 100vw;
@@ -68,6 +92,12 @@
     </style>
 </head>
 <body>
+<div class="navbar">
+    <a href="homepage.html"><img src="images/logo.png" alt="Logo"></a>
+    <a href="index.html">Shoes</a>
+    <a href="login.html">Login</a>
+</div>
+
 <div class="container">
     <div class="slider-wrapper">
         <div class="slider" id="slider">
