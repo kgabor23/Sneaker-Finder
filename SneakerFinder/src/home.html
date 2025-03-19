@@ -3,39 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
+    <title>Homepage</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
         }
-        .navbar {
-            display: flex;
-            align-items: center;
+        .top-buttons {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px 20px;
-            background-color: rgba(0, 0, 0, 0.2);
+            top: 20px;
+            left: 20px;
+            width: calc(100% - 40px);
+            display: flex;
+            justify-content: space-between;
             z-index: 1000;
         }
-
-        .navbar a {
+        .top-buttons button {
+            background: black;
             color: white;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 10px 20px;
+            padding: 10px 15px;
+            border: none;
             border-radius: 5px;
-            background: rgba(0, 0, 0, 0.6);
-            margin-right: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 16px;
         }
-
-        .navbar a:last-child {
-            margin-right: 0;
+        .top-buttons button:hover {
+            background: grey;
         }
-
         .container {
             position: relative;
             width: 100vw;
@@ -73,42 +69,18 @@
             justify-content: center;
             align-items: center;
         }
-        .controls table {
-            margin: 0;
-        }
         .arrow {
             cursor: pointer;
             width: 50px;
             height: 50px;
             margin: 0 10px;
         }
-
-        #image-link {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        /* Style for the road image */
-        #image-link img {
-            width: 50px; /* Adjusted size to 50px */
-            height: 50px; /* Adjusted size to 50px */
-        }
-
-        /* Hover effect for arrow and road image */
-        .arrow:hover,
-        #image-link:hover img {
-            transform: translateX(2px);
-            transition: transform 0.2s ease;
-        }
     </style>
 </head>
 <body>
-<div class="navbar">
-    <a href="index.html">Sneakers</a>
-    <a href="login.html">Log in</a>
+<div class="top-buttons">
+    <button onclick="location.href='login.html'">Log in</button>
+    <button onclick="location.href='index.html'">Sneakers</button>
 </div>
 
 <div class="container">
@@ -120,13 +92,9 @@
         </div>
     </div>
     <div class="controls">
-        <table>
-            <tr>
-                <td><img class="arrow" src="images/icons/blackArrowLeft.png" alt="Left Arrow" onclick="prevImage()"></td>
-                <td><img class="arrow" src="images/icons/blackArrowRight.png" alt="Right Arrow" onclick="nextImage()"></td>
-            </tr>
-        </table>
-        <a href="page1.html"><img class="arrow" src="images/icons/road.png" alt="Go to page" width="60px" height="60px"></a>
+        <img class="arrow" src="images/icons/blackArrowLeft.png" alt="Left Arrow" onclick="prevImage()">
+        <img class="arrow" src="images/icons/blackArrowRight.png" alt="Right Arrow" onclick="nextImage()">
+        <a href="page1.html"><img class="arrow" src="images/icons/road.png" alt="Go to page"></a>
     </div>
 </div>
 
@@ -135,23 +103,21 @@
     let currentIndex = 0;
     let autoChangeTimeout;
     const slider = document.getElementById("slider");
-    const imageLink = document.getElementById("image-link");
 
     function updateImage() {
         slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
-        imageLink.href = images[currentIndex];
     }
 
     function prevImage() {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         updateImage();
-        resetAutoChange(10000); // 10 másodperces szünet kattintás után
+        resetAutoChange(10000);
     }
 
     function nextImage() {
         currentIndex = (currentIndex + 1) % images.length;
         updateImage();
-        resetAutoChange(10000); // 10 másodperces szünet kattintás után
+        resetAutoChange(10000);
     }
 
     function startAutoChange() {
