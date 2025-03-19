@@ -12,6 +12,10 @@
             display: flex;
             height: 100vh;
             flex-direction: column;
+            background-image: url("images/backgrounds/mainbg.jpg");
+            background-size: 100% auto;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .header {
@@ -58,7 +62,7 @@
             left: -100%;
             width: 20%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 0.8);
             overflow-y: auto;
             transition: left 0.3s;
             padding: 20px;
@@ -82,14 +86,15 @@
         .dropdown {
             display: none;
             padding: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid black;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid silver;
+            border-radius: 10px;
         }
 
         .dropdown label {
             display: block;
             cursor: pointer;
-            color: white;
+            color: black;
         }
 
         .color-options {
@@ -97,7 +102,8 @@
             gap: 20px;
         }
 
-        .color-options img, .filter-section img {
+        .color-options img,
+        .filter-section img {
             width: 50px;
             height: 50px;
             cursor: pointer;
@@ -152,9 +158,58 @@
             transform: translateX(5px);
         }
 
+        .shoe-table {
+            width: 100%;
+            margin-top: 120px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        .shoe-card {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .shoe-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .shoe-card img {
+            width: 100%;
+            height: auto; /* Ensure the image scales properly */
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .shoe-card button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .shoe-card button:hover {
+            background-color: #555;
+        }
+
         @media (max-width: 1024px) {
             .filter-container {
                 width: 30%;
+            }
+
+            .shoe-table {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -162,13 +217,20 @@
             .filter-container {
                 width: 40%;
             }
+
             .filter-toggle {
                 width: 40px;
                 height: 40px;
             }
-            .color-options img, .filter-section img {
+
+            .color-options img,
+            .filter-section img {
                 width: 40px;
                 height: 40px;
+            }
+
+            .shoe-table {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -176,13 +238,20 @@
             .filter-container {
                 width: 60%;
             }
+
             .filter-toggle {
                 width: 30px;
                 height: 30px;
             }
-            .color-options img, .filter-section img {
+
+            .color-options img,
+            .filter-section img {
                 width: 35px;
                 height: 35px;
+            }
+
+            .shoe-table {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -191,6 +260,7 @@
                 font-size: 14px;
             }
         }
+
     </style>
 </head>
 <body>
@@ -292,6 +362,50 @@
         </div>
     </div>
 </div>
+
+<div class="shoe-table">
+    <div class="shoe-card">
+        <img src="images/sneakers/zebra.webp" alt="zebra">
+        <p>YEEZY 350 v2 ZEBRA</p>
+        <button onclick="window.location.href='sneaker.html'">View Details</button>
+    </div>
+    <div class="shoe-card">
+        <img src="images/sneakers/oreo.webp" alt="oreo">
+        <p>YEEZY 350 v2 OREO</p>
+        <button onclick="window.location.href='sneaker.html'">View Details</button>
+    </div>
+    <div class="shoe-card">
+        <img src="images/sneakers/dazzling.webp" alt="dazzling">
+        <p>YEEZY 350 v2 DAZZLING BLUE</p>
+        <button onclick="window.location.href='sneaker.html'">View Details</button>
+    </div>
+    <div class="shoe-card">
+        <img src="images/sneakers/utility.webp" alt="utility">
+        <p>YEEZY 500 UTILITY BLACK</p>
+        <button onclick="window.location.href='sneaker.html'">View Details</button>
+    </div>
+    <div class="shoe-card">
+        <img src="images/sneakers/tephra.webp" alt="tephra">
+        <p>YEEZY 700 v2 TEPHRA</p>
+        <button onclick="window.location.href='sneaker.html'">View Details</button>
+    </div>
+    <div class="shoe-card">
+        <img src="images/sneakers/supremeW.webp" alt="supremew">
+        <p>AIR FORCE 1 SUPREME WHITE</p>
+        <button onclick="window.location.href='sneaker.html'">View Details</button>
+    </div>
+    <div class="shoe-card">
+        <img src="images/sneakers/supremeB.webp" alt="supremeB">
+        <p>AIR FORCE 1 SUPREME BLACK</p>
+        <button onclick="window.location.href='sneaker.html'">View Details</button>
+    </div>
+    <div class="shoe-card">
+        <img src="images/sneakers/bubble.webp" alt="bubble">
+        <p>AIR JORDAN 1 BUBBLEGUM</p>
+        <button onclick="window.location.href='sneaker.html'">View Details</button>
+    </div>
+</div>
+
 <script>
     let selectedNikeSilhouettes = [];
     let selectedAdidasSilhouettes = [];
