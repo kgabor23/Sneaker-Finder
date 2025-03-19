@@ -133,7 +133,7 @@
 <script>
     const images = ["page1.html", "page2.html", "page3.html"];
     let currentIndex = 0;
-    let autoChangeInterval;
+    let autoChangeTimeout;
     const slider = document.getElementById("slider");
     const imageLink = document.getElementById("image-link");
 
@@ -145,22 +145,25 @@
     function prevImage() {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         updateImage();
-        resetAutoChange();
+        resetAutoChange(10000); // 10 másodperces szünet kattintás után
     }
 
     function nextImage() {
         currentIndex = (currentIndex + 1) % images.length;
         updateImage();
-        resetAutoChange();
+        resetAutoChange(10000); // 10 másodperces szünet kattintás után
     }
 
     function startAutoChange() {
-        autoChangeInterval = setInterval(nextImage, 5000);
+        autoChangeTimeout = setTimeout(function autoNext() {
+            nextImage();
+            autoChangeTimeout = setTimeout(autoNext, 5000);
+        }, 5000);
     }
 
-    function resetAutoChange() {
-        clearInterval(autoChangeInterval);
-        startAutoChange();
+    function resetAutoChange(pauseDuration = 5000) {
+        clearTimeout(autoChangeTimeout);
+        setTimeout(startAutoChange, pauseDuration);
     }
 
     startAutoChange();
