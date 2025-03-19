@@ -183,7 +183,7 @@
 
         .shoe-card img {
             width: 100%;
-            height: auto; /* Ensure the image scales properly */
+            height: auto;
             object-fit: cover;
             border-radius: 10px;
         }
@@ -385,42 +385,42 @@
     <div class="shoe-card">
         <img src="images/sneakers/zebra.webp" alt="zebra">
         <p>YEEZY 350 v2 ZEBRA</p>
-        <button onclick="window.location.href='sneaker.html'">View Details</button>
+        <a href="sneaker.html" onclick="selectShoe('YEEZY 350 v2 ZEBRA')"><button>View Details</button></a>
     </div>
     <div class="shoe-card">
         <img src="images/sneakers/oreo.webp" alt="oreo">
         <p>YEEZY 350 v2 OREO</p>
-        <button onclick="window.location.href='sneaker.html'">View Details</button>
+        <a href="sneaker.html" onclick="selectShoe('YEEZY 350 v2 OREO')"><button>View Details</button></a>
     </div>
     <div class="shoe-card">
         <img src="images/sneakers/dazzling.webp" alt="dazzling">
         <p>YEEZY 350 v2 DAZZLING BLUE</p>
-        <button onclick="window.location.href='sneaker.html'">View Details</button>
+        <a href="sneaker.html" onclick="selectShoe('YEEZY 350 v2 DAZZLING')"><button>View Details</button></a>
     </div>
     <div class="shoe-card">
         <img src="images/sneakers/utility.webp" alt="utility">
         <p>YEEZY 500 UTILITY BLACK</p>
-        <button onclick="window.location.href='sneaker.html'">View Details</button>
+        <a href="sneaker.html" onclick="selectShoe('YEEZY 500 UTILITY BLACK')"><button>View Details</button></a>
     </div>
     <div class="shoe-card">
         <img src="images/sneakers/tephra.webp" alt="tephra">
         <p>YEEZY 700 v2 TEPHRA</p>
-        <button onclick="window.location.href='sneaker.html'">View Details</button>
+        <a href="sneaker.html" onclick="selectShoe('YEEZY 700 v2 TEPHRA')"><button>View Details</button></a>
     </div>
     <div class="shoe-card">
         <img src="images/sneakers/supremeW.webp" alt="supremew">
         <p>AIR FORCE 1 SUPREME WHITE</p>
-        <button onclick="window.location.href='sneaker.html'">View Details</button>
+        <a href="sneaker.html" onclick="selectShoe('AIR FORCE 1 SUPREME WHITE')"><button>View Details</button></a>
     </div>
     <div class="shoe-card">
         <img src="images/sneakers/supremeB.webp" alt="supremeB">
         <p>AIR FORCE 1 SUPREME BLACK</p>
-        <button onclick="window.location.href='sneaker.html'">View Details</button>
+        <a href="sneaker.html" onclick="selectShoe('AIR FORCE 1 SUPREME BLACK')"><button>View Details</button></a>
     </div>
     <div class="shoe-card">
         <img src="images/sneakers/bubble.webp" alt="bubble">
         <p>AIR JORDAN 1 BUBBLEGUM</p>
-        <button onclick="window.location.href='sneaker.html'">View Details</button>
+        <a href="sneaker.html" onclick="selectShoe('AIR JORDAN 1 BUBBLEGUM')"><button>View Details</button></a>
     </div>
 </div>
 
@@ -511,6 +511,10 @@
     function searchFunction() {
         let searchInput = document.getElementById('searchInput').value;
         alert('Searching for: ' + searchInput);
+    }
+
+    function selectShoe(shoeName) {
+        localStorage.setItem("selectedShoe", shoeName);
     }
 </script>
 </body>
