@@ -14,16 +14,16 @@
             text-align: center;
         }
         .shoe-container {
-            max-width: 800px; /* Increased the container width */
+            max-width: 800px;
             margin: auto;
-            background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
-            padding: 30px; /* Increased padding for more space */
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .shoe-title {
-            font-size: 28px; /* Increased font size */
-            margin-bottom: 15px; /* Increased margin */
+            font-size: 28px;
+            margin-bottom: 15px;
         }
         .shoe-image {
             width: 100%;
@@ -39,17 +39,17 @@
         .carousel button {
             background: none;
             border: none;
-            font-size: 30px; /* Larger button for navigation */
+            font-size: 30px;
             cursor: pointer;
         }
         .shoe-description {
-            font-size: 18px; /* Increased font size */
+            font-size: 18px;
             color: #333;
-            margin-top: 15px; /* Increased margin */
+            margin-top: 15px;
         }
         .back-button {
             margin-top: 25px;
-            padding: 12px 18px; /* Larger button size */
+            padding: 12px 18px;
             background: black;
             color: white;
             border: none;
@@ -60,6 +60,23 @@
         .back-button:hover {
             background: grey;
         }
+        .thumbnail-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .thumbnail {
+            width: 22%;
+            height: auto;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -69,6 +86,11 @@
         <button onclick="prevImage()">&#9665;</button>
         <img id="shoeImage" class="shoe-image" src="" alt="Shoe Image">
         <button onclick="nextImage()">&#9655;</button>
+    </div>
+    <div class="thumbnail-container">
+        <img id="thumb1" class="thumbnail" src="" alt="Thumbnail 1" onclick="changeImage(0)">
+        <img id="thumb2" class="thumbnail" src="" alt="Thumbnail 2" onclick="changeImage(1)">
+        <img id="thumb3" class="thumbnail" src="" alt="Thumbnail 3" onclick="changeImage(2)">
     </div>
     <p class="shoe-description" id="shoeDescription"></p>
     <button class="back-button" onclick="location.href='finder.html'">Back to List</button>
@@ -100,7 +122,7 @@
                 "making it versatile for many different outfits. " +
                 "The Oreo colorway is perfect for those who prefer a subtle yet bold design."
         },
-        "YEEZY 350 v2 DAZZLING": {
+        "YEEZY 350 v2 DAZZLING BLUE": {
             images: [
                 "images/sneakers/dazzling.webp",
                 "images/sneakers/dazzling2.webp",
@@ -185,6 +207,11 @@
             document.getElementById("shoeTitle").innerText = currentShoe;
             document.getElementById("shoeImage").src = shoe.images[currentIndex];
             document.getElementById("shoeDescription").innerText = shoe.description;
+
+            // Load the thumbnails
+            for (let i = 0; i < shoe.images.length; i++) {
+                document.getElementById(`thumb${i + 1}`).src = shoe.images[i];
+            }
         }
     }
 
@@ -204,8 +231,12 @@
         }
     }
 
-    function goBack() {
-        window.location.href = "index.html";
+    function changeImage(index) {
+        const shoe = shoeData[currentShoe];
+        if (shoe) {
+            currentIndex = index;
+            document.getElementById("shoeImage").src = shoe.images[currentIndex];
+        }
     }
 
     loadShoeDetails();
