@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.shoe-container {
+    max-width: 800px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shoe-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.shoe-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.carousel button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.shoe-description {
+    font-size: 18px;
+    color: #333;
+    margin-top: 15px;
+}
+
+.back-button {
+    margin-top: 25px;
+    padding: 12px 18px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background: grey;
+}
+
+.thumbnail-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.thumbnail {
+    width: 22%;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1);
+}
