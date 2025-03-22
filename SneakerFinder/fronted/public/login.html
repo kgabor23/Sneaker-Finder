@@ -5,22 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/fronted/src/styles/login.css">
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let images = [
-                "images/backgrounds/register1.jpg",
-                "images/backgrounds/register2.jpg"
-            ];
-            let index = 0;
-            setInterval(() => {
-                document.body.style.background = `url('${images[index]}') center / cover no-repeat`;
-                index = (index + 1) % images.length;
-            }, 5000);
-        });
-    </script>
+    <script src="/fronted/src/scripts/login.js" defer></script>
 </head>
 <body style="background: url('images/backgrounds/register1.jpg') center / cover no-repeat;">
-<body>
 <div class="login-container">
     <h2>Log in</h2>
     <form id="loginForm">
