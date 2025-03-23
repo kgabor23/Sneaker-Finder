@@ -48,6 +48,7 @@ body {
     border: none;
     font-size: 30px;
     cursor: pointer;
+
 }
 
 .shoe-description {
@@ -57,7 +58,6 @@ body {
 }
 
 .back-button {
-    margin-top: 25px;
     padding: 12px 18px;
     background: black;
     color: white;
@@ -65,6 +65,8 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
+    margin: 25px auto;
+    display: block;
 }
 
 .back-button:hover {
