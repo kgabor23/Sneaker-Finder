@@ -5,11 +5,17 @@ body {
     display: flex;
     height: 100vh;
     flex-direction: column;
-    background-size: 100% auto;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
+.App {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 .header {
     width: 100%;
     padding: 0;
@@ -53,13 +59,15 @@ body {
     position: fixed;
     left: -100%;
     width: 20%;
-    height: 100%;
+    height: 100vh;
     background: rgba(255, 255, 255, 0.8);
     overflow-y: auto;
-    transition: left 0.3s;
+    transition: left 0.3s ease-in-out;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     border-left: 2px solid black;
+    top: 0;
+    z-index: 10;
 }
 
 .filter-toggle {
@@ -69,6 +77,28 @@ body {
     cursor: pointer;
     width: 50px;
     height: 50px;
+    z-index: 20;
+}
+
+.filter-container .filters-header {
+    font-size: 36px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #000;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    text-shadow: none;
+    display: block;
+}
+
+.filter-container img[alt="Close"] {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    z-index: 30;
+    position: relative;
 }
 
 .filter-section {
