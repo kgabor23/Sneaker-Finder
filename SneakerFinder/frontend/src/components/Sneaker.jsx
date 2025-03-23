@@ -106,6 +106,7 @@ const shoeData = {
 function ShoeDetails() {
     const { id } = useParams();
     const [currentIndex, setCurrentIndex] = useState(0);
+
     const shoe = shoeData[id];
 
     useEffect(() => {
@@ -131,12 +132,7 @@ function ShoeDetails() {
     }
 
     return (
-        <div
-            className="shoe-container"
-            style={{
-                backgroundImage: `url('/images/backgrounds/mainbg.jpg')`
-            }}
-        >
+        <div className="shoe-container" style={{backgroundImage: `url('/images/backgrounds/mainbg.jpg')`}}>
             <div className="card">
                 <h2 className="shoe-title">{id}</h2>
                 <div className="carousel">
@@ -146,19 +142,39 @@ function ShoeDetails() {
                 </div>
                 <div className="thumbnail-container">
                     {shoe.images.map((image, index) => (
-                        <img
-                            key={index}
-                            className="thumbnail"
-                            src={image}
-                            alt={`Thumbnail ${index + 1}`}
-                            onClick={() => changeImage(index)}
-                        />
+                        <img key={index} className="thumbnail" src={image} alt={`Thumbnail ${index + 1}`}
+                             onClick={() => changeImage(index)}/>
                     ))}
                 </div>
                 <p className="shoe-description">{shoe.description}</p>
                 <Link to="/finder">
                     <button className="back-button">Back to List</button>
                 </Link>
+            </div>
+
+            <div className="price-card">
+                <h3>Price Information</h3>
+                <table className="price-table">
+                    <thead>
+                    <tr>
+                        <th>Site</th>
+                        <th>Link</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>STOCKX</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Site2</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     );
