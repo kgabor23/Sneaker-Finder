@@ -1,0 +1,301 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.App {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    width: 100%;
+    padding: 0;
+    position: fixed;
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+    border: none;
+    padding: 5px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: black;
+}
+
+.search-bar img {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.filter-container {
+    position: fixed;
+    left: -100%;
+    width: 20%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.8);
+    overflow-y: auto;
+    transition: left 0.3s ease-in-out;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    border-left: 2px solid black;
+    top: 0;
+    z-index: 10;
+}
+
+.filter-toggle {
+    position: fixed;
+    left: 2%;
+    top: 50px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    z-index: 20;
+}
+
+.filter-container .filters-header {
+    font-size: 36px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #000;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    text-shadow: none;
+    display: block;
+}
+
+.filter-container img[alt="Close"] {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    z-index: 30;
+    position: relative;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    display: none;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid silver;
+    border-radius: 10px;
+}
+
+.dropdown label {
+    display: block;
+    cursor: pointer;
+    color: black;
+}
+
+.color-options {
+    display: none;
+    gap: 20px;
+}
+
+.color-options img,
+.filter-section img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.color-option-wrapper {
+    position: relative;
+}
+
+.filters-header {
+    font-size: 36px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #000;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    text-shadow: none;
+    display: block;
+}
+
+.filter-icon-wrapper {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.filter-icon-wrapper img {
+    margin-right: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.filter-icon-wrapper img:hover {
+    transform: translateX(5px);
+}
+
+.filter-icon-wrapper span {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+.filter-section img {
+    transition: transform 0.2s ease-in-out;
+}
+
+.filter-section img:hover {
+    transform: translateX(5px);
+}
+
+.shoe-table {
+    width: 100%;
+    margin-top: 120px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.shoe-card {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s;
+}
+
+.shoe-card:hover {
+    transform: translateY(-10px);
+}
+
+.shoe-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.shoe-card button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.homepage-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.homepage-btn:hover {
+    background: grey;
+}
+
+.shoe-card button:hover {
+    background-color: #555;
+}
+
+@media (max-width: 1024px) {
+    .filter-container {
+        width: 30%;
+    }
+
+    .shoe-table {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-container {
+        width: 40%;
+    }
+
+    .filter-toggle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .color-options img,
+    .filter-section img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .shoe-table {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-container {
+        width: 60%;
+    }
+
+    .filter-toggle {
+        width: 30px;
+        height: 30px;
+    }
+
+    .color-options img,
+    .filter-section img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .shoe-table {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dropdown {
+        font-size: 14px;
+    }
+}
